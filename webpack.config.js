@@ -36,8 +36,9 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.s?css$/i,
+        type: 'javascript/auto',
+        use: ["style-loader", "css-loader", "scoped-css-loader", "sass-loader"],
       },
       {
         test: /\.(js|jsx)$/,
@@ -45,8 +46,8 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-          }
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          },  
         }
       },
     ]
