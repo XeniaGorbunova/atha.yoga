@@ -3,11 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const getFilename = filetype => `assets/[name].[contenthash].${filetype}`;
 
 
-module.exports = {
-  entry: path.join(__dirname, "src", "index.jsx"),
+module.exports = (env, { mode }) => {
+  const isDev = mode === 'development';
+
+  return {
+    entry: path.join(__dirname, "src", "index.jsx"),
   output: {
     filename: getFilename('js'),
     path: path.resolve(__dirname, "dist"),
+    clean: true
   },
   mode: "development",
   module: {
@@ -50,6 +54,11 @@ module.exports = {
           },  
         }
       },
+      {
+        test: /\.js$/,
+        enforce: "pre",
+        use: ["source-map-loader"],
+      },
     ]
   },
   plugins: [
@@ -57,5 +66,7 @@ module.exports = {
       template: path.join(__dirname, "src", "index.html"),
     }),
   ],
+  ...isDev && { devtool: 'source-map' }
+  }
 }
 
