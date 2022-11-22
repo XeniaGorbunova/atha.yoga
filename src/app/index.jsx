@@ -1,12 +1,13 @@
 import React from 'react';
 import './style.scss';
+import CssBaseline from '@mui/material/CssBaseline';
+import SignIn from './components/SignIn/sign_in_default.js';
 
-const App = () => {
+export default function MyApp() {
   return (
-    <h1>
-        ATHA YOGA
-    </h1>
+    <React.Fragment>
+      <CssBaseline />
+      <SignIn />
+    </React.Fragment>
   );
-};
-
-export default App;
+}
