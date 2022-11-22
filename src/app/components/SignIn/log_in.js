@@ -38,7 +38,7 @@ export default function LogIn() {
           <Typography component="h1" variant="h2" class="header">
             Войти в аккаунт
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} class="form_container">
             <TextField
               margin="normal"
               fullWidth
@@ -65,7 +65,7 @@ export default function LogIn() {
                 />
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="#" variant="body2" class="link">
                   Забыли пароль?
                 </Link>
               </Grid>
@@ -85,7 +85,7 @@ export default function LogIn() {
                 </Typography>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="#" variant="body2" class="link">
                   Зарегистрироваться
                 </Link>
               </Grid>
