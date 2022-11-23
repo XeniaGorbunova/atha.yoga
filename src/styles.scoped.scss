@@ -13,3 +13,17 @@ header {
   border-radius: 5px;
 }
 
+.logo {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0D6EFD;
+}
+
+.logo img {
+  width: 150px;
+  height: 100px;
+}
+
