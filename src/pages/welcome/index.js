@@ -8,7 +8,7 @@ const WelcomePage = () => {
   const [isLogo, setIsLogo] = useState(true);
 
   useEffect(() => {
-    //setTimeout(() => setIsLogo(false), 2000);
+    setTimeout(() => setIsLogo(false), 2000);
   }, [])
 
   return isLogo ? <Logo /> : <SplashScreens />;
