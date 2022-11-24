@@ -24,16 +24,7 @@ module.exports = (env, { mode }) => {
         },
       },
       {
-        test: /\.svg$/,
-        use: ['@svgr/webpack', 'url-loader'],
-        type: 'asset/resource',
-        generator: {
-            filename: 'assets/images/[name][ext]',
-        },
-      },
-      {
         test: /\.(png|jp(e*)g|svg|ico|gif)$/,
-        use: ['file-loader'],
         type: 'asset/resource',
         generator: {
             filename: 'assets/images/[name][ext]',
