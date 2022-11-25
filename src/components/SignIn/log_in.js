@@ -35,10 +35,10 @@ export default function LogIn() {
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h2" class="header">
+          <Typography component="h1" variant="h2" class="header" className="header" gutterBottom>
             Войти в аккаунт
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} class="form_container">
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} class="form__container">
             <TextField
               margin="normal"
               fullWidth
@@ -57,15 +57,16 @@ export default function LogIn() {
               id="password"
               autoComplete="current-password"
             />
-            <Grid container alignItems="center">
+            <Grid container alignItems="center" marginTop={3} >
               <Grid item xs>
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="Запомнить меня"
+                  className="checkbox__label"
                 />
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2" class="link">
+                <Link href="#" variant="body2" class="welcome__link welcome__link-grey">
                   Забыли пароль?
                 </Link>
               </Grid>
@@ -85,7 +86,7 @@ export default function LogIn() {
                 </Typography>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2" class="link">
+                <Link href="#" variant="body2" class="welcome__link">
                   Зарегистрироваться
                 </Link>
               </Grid>
