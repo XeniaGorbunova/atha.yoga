@@ -2,6 +2,10 @@
   color: #212121;
 }
 
+.welcome__carousel {
+  position: relative;
+}
+
 .welcome__description {
   height: 44px;
   color: #616161;
@@ -14,9 +18,10 @@
   margin-bottom: 66px;
 }
 
-.link {
+.welcome__link {
+  color: #0D6EFD;
   text-decoration: none;
-  color: #0D6EFD
+  font-size: 14px;
 }
 
 .form_container {

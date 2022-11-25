@@ -34,10 +34,10 @@ function SplashScreens (props) {
   ]
 
   return (
-      <Carousel
+      <Carousel className="welcome__carousel"
         indicatorContainerProps={{
           style: {
-              position: 'fixed', 
+              position: 'absolute', 
               top: 550
               
           }
@@ -57,7 +57,7 @@ function Item(props) {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 6,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -87,7 +87,7 @@ function Item(props) {
               </Typography>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2" class="link">
+              <Link href="#" variant="body2" class="welcome__link">
                 Войти
               </Link>
             </Grid>
