@@ -10,11 +10,42 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import facebook from '../../assets/facebook.svg';
+import google from '../../assets/google.svg';
+import yandex from '../../assets/yandex.svg';
+import vk from '../../assets/vk.svg';
 
 const theme = createTheme();
 
 export default function LogIn() {
+  const [values, setValues] = React.useState({
+    amount: '',
+    password: '',
+    weight: '',
+    weightRange: '',
+    showPassword: false,
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -36,10 +67,10 @@ export default function LogIn() {
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h2" class="header">
+          <Typography component="h1" variant="h2" class="header" className="header" gutterBottom>
             Создать аккаунт
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} class="form_container">
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} class="form__container">
             <TextField
               margin="normal"
               fullWidth
@@ -49,14 +80,27 @@ export default function LogIn() {
               autoComplete="email"
               autoFocus
             />
-            <TextField
+            <OutlinedInput
               margin="normal"
               fullWidth
               name="password"
               placeholder="Пароль"
-              type="password"
               id="password"
               autoComplete="current-password"
+              type={values.showPassword ? 'text' : 'password'}
+              value={values.password}
+              onChange={handleChange('password')}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                   {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
             />
             <Grid container alignItems="center">
               <Grid item>
@@ -66,17 +110,18 @@ export default function LogIn() {
                 />
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2" class="link">
-                  пользовательского
+                <Link href="#" variant="body2" class="welcome__link">
+                  {'пользовательского'}
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2" class="link">
-                  соглашения
+                <Link href="#" variant="body2" class="welcome__link">
+                  {'соглашения'}
                 </Link>
               </Grid>
             </Grid>
             <Button
+              className="sign_in__button"
               type="submit"
               fullWidth
               variant="contained"
@@ -91,17 +136,27 @@ export default function LogIn() {
                 </Typography>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2" class="link">
+                <Link href="#" variant="body2" class="welcome__link">
                   Войти
                 </Link>
               </Grid>
             </Grid>
-            <Typography variant="body2">
-              Или войти с помощью
+            <div class="line"></div>
+            <Typography variant="body2" textAlign="center">
+               Или войти с помощью
             </Typography>
-            <Grid container>
-              <Grid item>
-                
+            <Grid container spacing={3} justifyContent="center" alignItems="center" marginTop={1}>
+              <Grid item xs={2}>
+                <img src={facebook} alt="icon" />
+              </Grid>
+              <Grid item xs={2}>
+                <img src={google} alt="icon" />
+              </Grid>
+              <Grid item xs={2}>
+                <img src={yandex} alt="icon" />
+              </Grid>
+              <Grid item xs={2}>
+                <img src={vk} alt="icon" />
               </Grid>
             </Grid>
           </Box>

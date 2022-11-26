@@ -1,6 +1,6 @@
 import React from 'react';
-import LogIn from '../../components/SignIn/log_in.js';
+import SignIn from '../../components/SignIn/sign_in.js';
 
-const LogInPage = () => <LogIn />;
+const SignInPage = () => <SignIn />;
 
-export default LogInPage;
+export default SignInPage;

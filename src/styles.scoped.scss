@@ -22,6 +22,7 @@
   color: #0D6EFD;
   text-decoration: none;
   font-size: 14px;
+  white-space: pre;
 }
 
 .form__container {
@@ -48,6 +49,19 @@
   font-size: 14px;
   color: #212121;
 }
+
+.line {
+  margin: 32px 72px;
+  height: 0;
+  width: 232px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.sign_in__button {
+  background-color: #0D6EFD;
+  height: 48px;
+}
+
 
 
 
