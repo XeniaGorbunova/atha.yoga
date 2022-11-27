@@ -6,30 +6,26 @@ import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import splash_1 from '../../../assets/splash_1.svg';
-import splash_2 from '../../../assets/splash_2.svg';
-import splash_3 from '../../../assets/splash_3.svg';
+import splash1 from '../../../assets/splash1.svg';
+import splash2 from '../../../assets/splash2.svg';
+import splash3 from '../../../assets/splash3.svg';
 
-const theme = createTheme();
-
-function SplashScreens (props) {
+function SplashScreens () {
   let items = [
     {
         name: "Исследуйте",
         description: "множество занятий и материалов \nпо различным темам и направлениям",
-        image: splash_1
+        image: splash1
     },
     {
         name: "Занимайтесь",
         description: "в подходящее время, в удобном месте, \nс лучшими преподавателями",
-        image: splash_2
+        image: splash2
     },
     {
       name: "Создавайте",
       description: "собственные курсы и занятия",
-      image: splash_3
+      image: splash3
     }
   ]
 
@@ -52,9 +48,6 @@ function SplashScreens (props) {
 
 function Item(props) {
     return (
-      <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 6,
@@ -78,7 +71,7 @@ function Item(props) {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            ПРИСОЕДЕНИТЬСЯ
+            Присоедениться
           </Button>
           <Grid container spacing={1} alignItems="center" justifyContent="center">
             <Grid item>
@@ -93,8 +86,6 @@ function Item(props) {
             </Grid>
           </Grid>
         </Box>
-      </Container>
-    </ThemeProvider>
     );
 }
 
