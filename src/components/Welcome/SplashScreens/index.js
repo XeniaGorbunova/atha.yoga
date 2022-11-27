@@ -1,70 +1,98 @@
-import React from 'react';
-import Carousel from 'react-material-ui-carousel';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
+import * as React from 'react';
+import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import MobileStepper from '@mui/material/MobileStepper';
+import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
+import Container from '@mui/material/Container';
+import SwipeableViews from 'react-swipeable-views';
+import { autoPlay } from 'react-swipeable-views-utils';
 import splash1 from '../../../assets/splash1.svg';
 import splash2 from '../../../assets/splash2.svg';
 import splash3 from '../../../assets/splash3.svg';
 
-function SplashScreens () {
-  let items = [
-    {
-        name: "Исследуйте",
-        description: "множество занятий и материалов \nпо различным темам и направлениям",
-        image: splash1
-    },
-    {
-        name: "Занимайтесь",
-        description: "в подходящее время, в удобном месте, \nс лучшими преподавателями",
-        image: splash2
-    },
-    {
-      name: "Создавайте",
-      description: "собственные курсы и занятия",
-      image: splash3
-    }
-  ]
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+
+let items = [
+  {
+      name: "Исследуйте",
+      description: "множество занятий и материалов \nпо различным темам и направлениям",
+      image: splash1
+  },
+  {
+      name: "Занимайтесь",
+      description: "в подходящее время, в удобном месте, \nс лучшими преподавателями",
+      image: splash2
+  },
+  {
+    name: "Создавайте",
+    description: "собственные курсы и занятия",
+    image: splash3
+  }
+]
+
+function SplashScreens() {
+  const theme = useTheme();
+  const [activeStep, setActiveStep] = React.useState(0);
+  const maxSteps = items.length;
+
+  const handleStepChange = (step) => {
+    setActiveStep(step);
+  };
 
   return (
-      <Carousel className="welcome__carousel"
-        indicatorContainerProps={{
-          style: {
-              position: 'absolute', 
-              top: 550
-              
-          }
-        }}
+    <Container component="main" maxWidth="xs">
+    <Box
+      sx={{
+        marginTop: 6,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <Typography component="h1" variant="h2" class="header" className="header">
+        {items[activeStep].name}
+      </Typography>
+      <Typography variant="body2" className="welcome__description">
+        {items[activeStep].description}      
+      </Typography>
+      <AutoPlaySwipeableViews
+        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        index={activeStep}
+        onChangeIndex={handleStepChange}
+        enableMouseEvents
       >
-          {
-              items.map( (item, i) => <Item key={i} item={item} /> )
-          }
-      </Carousel>
-  )
-}
-
-function Item(props) {
-    return (
-        <Box
-          sx={{
-            marginTop: 6,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            height: 812,
-          }}
-        >
-          <Typography component="h1" variant="h2" class="header" className="header">
-            {props.item.name}
-          </Typography>
-          <Typography variant="body2" className="welcome__description">
-            {props.item.description}      
-          </Typography>
-          <img className="welcome__img" src={props.item.image} alt='man doing yoga' />
-            
+        {items.map((step, index) => (
+          <div key={step.name}>
+          {Math.abs(activeStep - index) <= 2 ? (
+            <Box
+              component="img"
+              sx={{
+                height: 300,
+                display: 'block',
+                maxWidth: 375,
+                marginTop: 5,
+                marginBottom: 6,
+                overflow: 'hidden',
+                width: '100%',
+              }}
+              src={step.image}
+              alt={'a man is doing yoga'}
+            />
+          ) : null}
+        </div>
+        ))}
+      </AutoPlaySwipeableViews>
+      <MobileStepper
+        steps={maxSteps}
+        position="static"
+        activeStep={activeStep}
+      />  
           <Button
             type="submit"
             fullWidth
@@ -86,7 +114,8 @@ function Item(props) {
             </Grid>
           </Grid>
         </Box>
-    );
+      </Container>
+  );
 }
 
 export default SplashScreens;
