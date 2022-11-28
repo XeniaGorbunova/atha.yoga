@@ -2,11 +2,8 @@ import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Container from '@mui/material/Container';
@@ -18,25 +15,25 @@ import splash3 from '../../../assets/splash3.svg';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-let items = [
+const items = [
   {
-      name: "Исследуйте",
-      description: "множество занятий и материалов \nпо различным темам и направлениям",
-      image: splash1
+    name: 'Исследуйте',
+    description: 'множество занятий и материалов \nпо различным темам и направлениям',
+    image: splash1,
   },
   {
-      name: "Занимайтесь",
-      description: "в подходящее время, в удобном месте, \nс лучшими преподавателями",
-      image: splash2
+    name: 'Занимайтесь',
+    description: 'в подходящее время, в удобном месте, \nс лучшими преподавателями',
+    image: splash2,
   },
   {
-    name: "Создавайте",
-    description: "собственные курсы и занятия",
-    image: splash3
-  }
-]
+    name: 'Создавайте',
+    description: 'собственные курсы и занятия',
+    image: splash3,
+  },
+];
 
-function SplashScreens() {
+const SplashScreens = () => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = items.length;
@@ -47,75 +44,75 @@ function SplashScreens() {
 
   return (
     <Container component="main" maxWidth="xs">
-    <Box
-      sx={{
-        marginTop: 6,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
-      <Typography component="h1" variant="h2" class="header" className="header">
-        {items[activeStep].name}
-      </Typography>
-      <Typography variant="body2" className="welcome__description">
-        {items[activeStep].description}      
-      </Typography>
-      <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
+      <Box
+        sx={{
+          marginTop: 6,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
       >
-        {items.map((step, index) => (
-          <div key={step.name}>
-          {Math.abs(activeStep - index) <= 2 ? (
-            <Box
-              component="img"
-              sx={{
-                height: 300,
-                display: 'block',
-                maxWidth: 375,
-                marginTop: 5,
-                marginBottom: 6,
-                overflow: 'hidden',
-                width: '100%',
-              }}
-              src={step.image}
-              alt={'a man is doing yoga'}
-            />
-          ) : null}
-        </div>
-        ))}
-      </AutoPlaySwipeableViews>
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-      />  
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Присоедениться
-          </Button>
-          <Grid container spacing={1} alignItems="center" justifyContent="center">
-            <Grid item>
-              <Typography variant="body2">
-                 Уже есть аккаунт?
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2" class="welcome__link">
-                Войти
-              </Link>
-            </Grid>
+        <Typography component="h1" variant="h4" fontWeight='500' gutterBottom={3}>
+          {items[activeStep].name}
+        </Typography>
+        <Typography variant="body2" color='text.secondary' className="welcome__description">
+          {items[activeStep].description}
+        </Typography>
+        <AutoPlaySwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={activeStep}
+          onChangeIndex={handleStepChange}
+          enableMouseEvents
+        >
+          {items.map((step, index) => (
+            <div key={step.name}>
+              {Math.abs(activeStep - index) <= 2 ? (
+                <Box
+                  component="img"
+                  sx={{
+                    height: 300,
+                    display: 'block',
+                    maxWidth: 375,
+                    marginTop: 5,
+                    marginBottom: 6,
+                    overflow: 'hidden',
+                    width: '100%',
+                  }}
+                  src={step.image}
+                  alt="a man is doing yoga"
+                />
+              ) : null}
+            </div>
+          ))}
+        </AutoPlaySwipeableViews>
+        <MobileStepper
+          steps={maxSteps}
+          position="static"
+          activeStep={activeStep}
+        />
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          sx={{ mt: 3, mb: 2 }}
+        >
+          Присоединиться
+        </Button>
+        <Grid container spacing={1} alignItems="center" justifyContent="center">
+          <Grid item>
+            <Typography variant="body2">
+              Уже есть аккаунт?
+            </Typography>
           </Grid>
-        </Box>
-      </Container>
+          <Grid item>
+            <Link href="#" variant="body2" underline="none">
+              Войти
+            </Link>
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
   );
-}
+};
 
 export default SplashScreens;

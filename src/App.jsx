@@ -6,7 +6,20 @@ import WelcomePage from './pages/welcome/index.js';
 import SignInPage from './pages/signIn/index.js';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#0D6EFD',
+    },
+    text: {
+      primary: '#212121',
+      secondary: '#616161',
+    },
+    h4: {
+      fontWeight: 500,
+    },
+  },
+});
 
 export default function MyApp() {
   return (

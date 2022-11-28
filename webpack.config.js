@@ -13,7 +13,7 @@ module.exports = (env, { mode }) => {
     path: path.resolve(__dirname, "dist"),
     clean: true
   },
-  mode: "development",
+  mode,
   module: {
     rules: [
       {
