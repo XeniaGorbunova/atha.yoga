@@ -12,6 +12,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import Container from '@mui/material/Container';
 import facebook from '../../assets/facebook.svg';
 import google from '../../assets/google.svg';
 import yandex from '../../assets/yandex.svg';
@@ -51,6 +52,7 @@ export default function LogIn() {
   };
 
   return (
+    <Container component="main" maxWidth="xs">
         <Box
           sx={{
             marginTop: 8,
@@ -59,7 +61,7 @@ export default function LogIn() {
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h2" class="header" className="header" gutterBottom>
+          <Typography component="h1" variant="h4" fontWeight="500" gutterBottom>
             Создать аккаунт
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} class="form__container">
@@ -102,18 +104,18 @@ export default function LogIn() {
                 />
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2" class="welcome__link">
+                <Link href="#" variant="body2" underline="none">
                   {'пользовательского'}
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2" class="welcome__link">
+                <Link href="#" variant="body2" underline="none">
                   {'соглашения'}
                 </Link>
               </Grid>
             </Grid>
             <Button
-              className="sign_in__button"
+              size="large"
               type="submit"
               fullWidth
               variant="contained"
@@ -128,7 +130,7 @@ export default function LogIn() {
                 </Typography>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2" class="welcome__link">
+                <Link href="#" variant="body2" underline="none">
                   Войти
                 </Link>
               </Grid>
@@ -139,19 +141,28 @@ export default function LogIn() {
             </Typography>
             <Grid container spacing={3} justifyContent="center" alignItems="center" marginTop={1}>
               <Grid item xs={2}>
-                <img src={facebook} alt="icon" />
+                <Link href="#">
+                  <img src={facebook} alt="icon" />
+                </Link>
               </Grid>
               <Grid item xs={2}>
-                <img src={google} alt="icon" />
+                <Link href="#">
+                  <img src={google} alt="icon" />
+                </Link>
               </Grid>
               <Grid item xs={2}>
-                <img src={yandex} alt="icon" />
+                <Link href="#">
+                  <img src={yandex} alt="icon" />
+                </Link>
               </Grid>
               <Grid item xs={2}>
-                <img src={vk} alt="icon" />
+                <Link href="#">
+                  <img src={vk} alt="icon" />
+                </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
+    </Container>
   );
 }

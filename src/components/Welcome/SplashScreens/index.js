@@ -52,7 +52,7 @@ const SplashScreens = () => {
           alignItems: 'center',
         }}
       >
-        <Typography component="h1" variant="h4" fontWeight='500' gutterBottom={3}>
+        <Typography component="h1" variant="h4" fontWeight="500" gutterBottom={3}>
           {items[activeStep].name}
         </Typography>
         <Typography variant="body2" color='text.secondary' className="welcome__description">
