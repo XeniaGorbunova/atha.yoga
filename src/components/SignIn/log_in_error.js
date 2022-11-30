@@ -12,7 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Container from '@mui/material/Container';
 
-export default function LogIn() {
+export default function LogInError() {
   const [values, setValues] = React.useState({
     amount: '',
     password: '',
@@ -60,6 +60,7 @@ export default function LogIn() {
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="form__container">
           <TextField
+            error
             sx={{ mb: 2 }}
             margin="normal"
             fullWidth
@@ -71,6 +72,7 @@ export default function LogIn() {
             autoFocus
           />
           <OutlinedInput
+            error
             sx={{ mb: 2 }}
             fullWidth
             label="Пароль"
@@ -91,8 +93,12 @@ export default function LogIn() {
                   {values.showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
-                )}
+            )}
           />
+          <Typography variant="body2" color="error.main" sx={{ mb: 2 }}>
+            Вы ввели неверную электронную почту
+            и/или пароль.
+          </Typography>
           <div style={{ textAlign: 'right' }}>
             <Link href="#" variant="body2" underline="none">
               Забыли пароль?
