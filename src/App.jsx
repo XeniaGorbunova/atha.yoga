@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import LogInPage from './pages/logIn/index.js';
 import WelcomePage from './pages/welcome/index.js';
 import SignInPage from './pages/signIn/index.js';
+import SignInDefaultPage from './pages/signInDefault';
 
 const theme = createTheme({
   palette: {
@@ -19,13 +20,16 @@ const theme = createTheme({
   h4: {
     fontWeight: 500,
   },
+  h1: {
+    fontWeight: 500,
+  },
 });
 
 export default function MyApp() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SignInPage />
+      <SignInDefaultPage />
     </ThemeProvider>
   );
 }
