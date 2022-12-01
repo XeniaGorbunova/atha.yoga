@@ -122,22 +122,13 @@ export default function Sign_in_default() {
             </Grid>
           </Grid>
         </Box>
-        <div style={{ position: 'absolute', bottom: 32 }}>
+        <div style={{ position: 'absolute', bottom: 32, textAlign: 'center', maxWidth: 380 }}>
           <Typography variant="caption">
-            Нажимая на кнопку «Зарегистрироваться», я подтверждаю,
+            Нажимая на кнопку «Зарегистрироваться», я подтверждаю, что ознакомлен(а) с
+            <Link variant="caption" underline="none" marginLeft={1}>
+              пользовательским соглашением
+            </Link>
           </Typography>
-          <Grid container justifyContent='center' spacing={1}>
-            <Grid item>
-              <Typography variant="caption">
-                что ознакомлен(а) с
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Link variant="caption" underline="none">
-                пользовательским соглашением
-              </Link>
-            </Grid>
-          </Grid>
         </div>
       </Box>
     </Container>

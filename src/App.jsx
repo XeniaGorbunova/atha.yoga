@@ -33,15 +33,15 @@ const theme = createTheme({
     h6: {
       fontSize: "1.25rem",
       lineHeight: 1.2,
-    }
-  }
+    },
+  },
 });
 
 export default function MyApp() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <PasswordRecoveryErrorPage />
+      <SignInDefaultPage />
     </ThemeProvider>
   );
 }
