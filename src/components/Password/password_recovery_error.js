@@ -44,9 +44,9 @@ export default function PasswordRecovery() {
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate className="form__container">
           <TextField
-            sx={{ mb: 2, mt: 1 }}
+            error
+            sx={{ mt: 1 }}
             label="Электронная почта"
-            margin="normal"
             fullWidth
             id="email"
             placeholder="E-mail"
@@ -54,12 +54,15 @@ export default function PasswordRecovery() {
             autoComplete="email"
             autoFocus
           />
+          <Typography variant="caption" color="error.main" marginLeft={2}>
+            Адрес электронной почты введён некорректно
+          </Typography>
           <Button
             type="submit"
             size="large"
             fullWidth
             variant="contained"
-            sx={{ mt: 2, mb: 1 }}
+            sx={{ mt: 4, mb: 1 }}
           >
             Отправить
           </Button>

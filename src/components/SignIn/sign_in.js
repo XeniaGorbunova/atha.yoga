@@ -67,6 +67,7 @@ export default function LogIn() {
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} class="form__container">
             <TextField
               margin="normal"
+              label="Электронная почта"
               fullWidth
               id="email"
               placeholder="E-mail"
