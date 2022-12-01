@@ -12,6 +12,7 @@ import SignInConfirmPage from './pages/signInConfirm';
 import ChangePasswordPage from './pages/changePassword';
 import PasswordRecoveryPage from './pages/passwordRecovery';
 import PasswordRecoveryErrorPage from './pages/passwordRecoveryError';
+import LogInBlockedPage from './pages/logInBlocked';
 
 const theme = createTheme({
   palette: {
@@ -41,7 +42,7 @@ export default function MyApp() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SignInDefaultPage />
+      <LogInBlockedPage />
     </ThemeProvider>
   );
 }
