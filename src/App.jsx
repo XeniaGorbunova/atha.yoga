@@ -9,6 +9,7 @@ import SignInDefaultPage from './pages/signInDefault';
 import SignInErrorPage from './pages/signInError';
 import LogInErrorPage from './pages/logInError/index.js';
 import SignInConfirmPage from './pages/signInConfirm';
+import ChangePasswordPage from './pages/changePassword';
 
 const theme = createTheme({
   palette: {
@@ -38,7 +39,7 @@ export default function MyApp() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SignInConfirmPage />
+      <ChangePasswordPage />
     </ThemeProvider>
   );
 }

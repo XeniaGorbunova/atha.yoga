@@ -55,7 +55,7 @@ export default function Sign_in_default() {
           alignItems: 'center',
         }}
       >
-        <Typography component="h1" variant="h4" fontWeight="500" sx={{ mb: 3 }}>
+        <Typography component="h1" variant="h4" sx={{ mb: 3 }}>
           Регистрация
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="form__container">

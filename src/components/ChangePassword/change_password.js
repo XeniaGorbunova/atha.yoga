@@ -11,9 +11,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Container from '@mui/material/Container';
-import InputLabel from '@mui/material/InputLabel';
 
-export default function Sign_in_default() {
+export default function ChangePassword() {
   const [values, setValues] = React.useState({
     amount: '',
     password: '',
@@ -57,26 +56,13 @@ export default function Sign_in_default() {
         }}
       >
         <Typography component="h1" variant="h4" sx={{ mb: 3 }}>
-          Регистрация
+          Изменить пароль
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="form__container">
-          <TextField
-            error
-            sx={{ mb: 2 }}
-            margin="normal"
-            fullWidth
-            id="email"
-            label="Электронная почта"
-            placeholder="E-mail"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
           <OutlinedInput
-            error
-            sx={{ mb: 2 }}
+            sx={{ mb: 2, mt: 1 }}
             fullWidth
-            label="Пароль"
+            label="Новый пароль"
             name="password"
             placeholder="Пароль"
             id="password"
@@ -96,49 +82,16 @@ export default function Sign_in_default() {
               </InputAdornment>
             )}
           />
-
-          <Typography variant="body2" color="error.main" sx={{ mb: 2 }}>
-            Введите электронную почту и пароль
-          </Typography>
           <Button
             type="submit"
             size="large"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ mt: 2, mb: 1 }}
           >
-            Зарегистрироваться
+            Изменить
           </Button>
-          <Grid container spacing={1} alignItems="center" justifyContent="center">
-            <Grid item>
-              <Typography variant="body2">
-                Уже есть аккаунт?
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2" underline="none">
-                Войти
-              </Link>
-            </Grid>
-          </Grid>
         </Box>
-        <div style={{ position: 'absolute', bottom: 32 }}>
-          <Typography variant="caption">
-            Нажимая на кнопку «Зарегистрироваться», я подтверждаю,
-          </Typography>
-          <Grid container justifyContent='center' spacing={1}>
-            <Grid item>
-              <Typography variant="caption">
-                что ознакомлен(а) с
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Link variant="caption" underline="none">
-                пользовательским соглашением
-              </Link>
-            </Grid>
-          </Grid>
-        </div>
       </Box>
     </Container>
   );

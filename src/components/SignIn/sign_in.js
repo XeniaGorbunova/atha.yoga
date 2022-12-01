@@ -61,7 +61,7 @@ export default function LogIn() {
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h4" fontWeight="500" gutterBottom>
+          <Typography component="h1" variant="h4" gutterBottom>
             Создать аккаунт
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} class="form__container">
