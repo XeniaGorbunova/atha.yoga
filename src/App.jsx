@@ -13,6 +13,7 @@ import ChangePasswordPage from './pages/changePassword';
 import PasswordRecoveryPage from './pages/passwordRecovery';
 import PasswordRecoveryErrorPage from './pages/passwordRecoveryError';
 import LogInBlockedPage from './pages/logInBlocked';
+import ProfilePage from './pages/profile';
 
 const theme = createTheme({
   palette: {
@@ -42,7 +43,7 @@ export default function MyApp() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <LogInBlockedPage />
+      <ProfilePage />
     </ThemeProvider>
   );
 }
