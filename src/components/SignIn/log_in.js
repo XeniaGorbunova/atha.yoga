@@ -15,7 +15,6 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import Container from '@mui/material/Container';
 import { FormControl } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
-import * as Yup from 'yup';
 import { clearMessage } from '../../slices/message';
 import { login } from '../../slices/auth';
 
@@ -31,11 +30,6 @@ export default function LogIn() {
   useEffect(() => {
     dispatch(clearMessage());
   }, [dispatch]);
-
-  const validationSchema = Yup.object().shape({
-    email: Yup.string().required('Поле обязательно для заполнения'),
-    password: Yup.string().required('Поле обязательно для заполнения'),
-  });
 
   const [values, setValues] = React.useState({
     amount: '',
@@ -104,7 +98,6 @@ export default function LogIn() {
             <TextField
               required
               error={false}
-              //helperText="Проверьте правильность введённых данных"
               sx={{ mb: 2 }}
               margin="normal"
               fullWidth
