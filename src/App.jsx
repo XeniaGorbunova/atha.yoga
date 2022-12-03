@@ -43,7 +43,7 @@ export default function MyApp() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SignInErrorPage />
+      <LogInPage />
     </ThemeProvider>
   );
 }
