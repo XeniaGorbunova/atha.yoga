@@ -4,7 +4,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import LogInPage from './pages/logIn/index.js';
 import WelcomePage from './pages/welcome/index.js';
-import SignInPage from './pages/signIn/index.js';
 import SignInDefaultPage from './pages/signInDefault';
 import SignInErrorPage from './pages/signInError';
 import LogInErrorPage from './pages/logInError/index.js';
