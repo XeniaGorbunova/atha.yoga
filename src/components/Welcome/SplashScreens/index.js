@@ -91,6 +91,8 @@ const SplashScreens = () => {
           activeStep={activeStep}
         />
         <Button
+          component={Link}
+          to="/login"
           type="submit"
           fullWidth
           variant="contained"

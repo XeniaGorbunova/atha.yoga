@@ -14,7 +14,7 @@ import Container from '@mui/material/Container';
 import { FormControl } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../../slices/auth';
+import { registerSlice } from '../../slices/auth';
 import { clearMessage } from '../../slices/message';
 
 export default function SignInDefault() {
@@ -72,7 +72,7 @@ export default function SignInDefault() {
 
       setSuccessful(false);
 
-      dispatch(register({
+      dispatch(registerSlice({
         email,
         password,
       }))

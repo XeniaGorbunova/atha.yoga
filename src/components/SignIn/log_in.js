@@ -16,7 +16,7 @@ import Container from '@mui/material/Container';
 import { FormControl } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import { clearMessage } from '../../slices/message';
-import { login } from '../../slices/auth';
+import { loginSlice } from '../../slices/auth';
 
 export default function LogIn() {
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ export default function LogIn() {
     };
     setLoading(true);
 
-    dispatch(login({ email, password }))
+    dispatch(loginSlice({ email, password }))
       .unwrap()
       .then(() => {
         navigate('/profile');

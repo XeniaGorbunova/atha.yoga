@@ -1,18 +1,20 @@
 import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './styles.scoped.scss';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import LogInPage from './pages/logIn/index.js';
-import WelcomePage from './pages/welcome/index.js';
+import LogInPage from './pages/logIn/index';
+import WelcomePage from './pages/welcome/index';
 import SignInDefaultPage from './pages/signInDefault';
-import SignInErrorPage from './pages/signInError';
-import LogInErrorPage from './pages/logInError/index.js';
 import SignInConfirmPage from './pages/signInConfirm';
 import ChangePasswordPage from './pages/changePassword';
 import PasswordRecoveryPage from './pages/passwordRecovery';
-import PasswordRecoveryErrorPage from './pages/passwordRecoveryError';
 import LogInBlockedPage from './pages/logInBlocked';
 import ProfilePage from './pages/profile';
+import AuthProvider from './utils/providers/auth';
+import BaseLayout from './layouts';
+import ProfileLayout from './layouts/profile';
+import useAuth from './utils/hooks/useAux';
 
 const theme = createTheme({
   palette: {
@@ -32,17 +34,37 @@ const theme = createTheme({
       fontWeight: 500,
     },
     h6: {
-      fontSize: "1.25rem",
+      fontSize: '1.25rem',
       lineHeight: 1.2,
     },
   },
 });
 
-export default function MyApp() {
+function MyApp() {
+
+  const auth = useAuth();
+  const Layout = auth.isLoggedIn ? ProfileLayout : BaseLayout;
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <LogInPage />
+      <Routes>
+        <Route path="/" element={<Layout auth={auth} />}>
+          <Route index element={!auth.isLoggedIn ? <WelcomePage /> : <Navigate replace to="profile" />} />
+          <Route path="login" element={<LogInPage />} />
+          <Route path="register" element={<SignInDefaultPage />} />
+          <Route path="profile" element={<ProfilePage auth={auth} />} />
+        </Route>
+      </Routes>
+
     </ThemeProvider>
+  );
+}
+
+export default function Root() {
+  return (
+    <AuthProvider>
+      <MyApp />
+    </AuthProvider>
   );
 }
