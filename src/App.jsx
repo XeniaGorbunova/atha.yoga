@@ -11,10 +11,10 @@ import ChangePasswordPage from './pages/changePassword';
 import PasswordRecoveryPage from './pages/passwordRecovery';
 import LogInBlockedPage from './pages/logInBlocked';
 import ProfilePage from './pages/profile';
-import AuthProvider from './utils/providers/auth';
-import BaseLayout from './layouts';
-import ProfileLayout from './layouts/profile';
-import useAuth from './utils/hooks/useAux';
+import AuthProvider from './utils/providers/auth/index.jsx';
+import BaseLayout from './layouts/index.jsx';
+import ProfileLayout from './layouts/profile/index.jsx';
+import useAuth from './utils/hooks/useAux/index.js';
 
 const theme = createTheme({
   palette: {

@@ -79,7 +79,7 @@ export default function LogIn() {
   };
 
   if (isLoggedIn) {
-    return <Navigate to='/profile' />;
+    return <Navigate to="/profile" />;
   }
   return (
     <Container component="main" maxWidth="xs">
@@ -94,73 +94,73 @@ export default function LogIn() {
         <Typography component="h1" variant="h4" sx={{ mb: 3 }}>
           Вход
         </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="form__container">
-            <TextField
-              required
-              error={false}
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="form__container">
+          <TextField
+            required
+            error={false}
+            sx={{ mb: 2 }}
+            margin="normal"
+            fullWidth
+            id="email"
+            label="Электронная почта"
+            placeholder="E-mail"
+            name="email"
+            autoComplete="email"
+            autoFocus
+          />
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Пароль</InputLabel>
+            <OutlinedInput
               sx={{ mb: 2 }}
-              margin="normal"
               fullWidth
-              id="email"
-              label="Электронная почта"
-              placeholder="E-mail"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <FormControl variant="outlined" fullWidth>
-              <InputLabel>Пароль</InputLabel>
-              <OutlinedInput
-                sx={{ mb: 2 }}
-                fullWidth
-                label="Пароль"
-                name="password"
-                placeholder="Пароль"
-                id="password"
-                autoComplete="current-password"
-                type={values.showPassword ? 'text' : 'password'}
-                value={values.password}
-                onChange={handleChange('password')}
-                endAdornment={(
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
-                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
+              label="Пароль"
+              name="password"
+              placeholder="Пароль"
+              id="password"
+              autoComplete="current-password"
+              type={values.showPassword ? 'text' : 'password'}
+              value={values.password}
+              onChange={handleChange('password')}
+              endAdornment={(
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
                   )}
-              />
-            </FormControl>
-            <div style={{ textAlign: 'right' }}>
-              <Link href="#" variant="body2" underline="none">
-                Забыли пароль?
-              </Link>
-            </div>
-            <Button
-              type="submit"
-              size="large"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Войти
-            </Button>
-            <Grid container spacing={1} alignItems="center" justifyContent="center">
-              <Grid item>
-                <Typography variant="body2">
-                  Ещё нет аккаунта?
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2" underline="none">
-                  Зарегистрироваться
-                </Link>
-              </Grid>
+            />
+          </FormControl>
+          <div style={{ textAlign: 'right' }}>
+            <Link href="#" variant="body2" underline="none">
+              Забыли пароль?
+            </Link>
+          </div>
+          <Button
+            type="submit"
+            size="large"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Войти
+          </Button>
+          <Grid container spacing={1} alignItems="center" justifyContent="center">
+            <Grid item>
+              <Typography variant="body2">
+                Ещё нет аккаунта?
+              </Typography>
             </Grid>
-          </Box>
+            <Grid item>
+              <Link href="#" variant="body2" underline="none">
+                Зарегистрироваться
+              </Link>
+            </Grid>
+          </Grid>
+        </Box>
       </Box>
     </Container>
   );
