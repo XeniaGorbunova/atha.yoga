@@ -54,9 +54,9 @@ function MyApp() {
           <Route path="login" element={<LogInPage />} />
           <Route path="register" element={<SignInDefaultPage />} />
           <Route path="profile" element={<ProfilePage auth={auth} />} />
+          <Route path="recovery-password" element={<PasswordRecoveryPage />} />
         </Route>
       </Routes>
-
     </ThemeProvider>
   );
 }

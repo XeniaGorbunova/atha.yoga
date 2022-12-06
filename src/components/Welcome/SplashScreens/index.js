@@ -1,11 +1,11 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import Container from '@mui/material/Container';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
@@ -107,9 +107,9 @@ const SplashScreens = () => {
             </Typography>
           </Grid>
           <Grid item>
-            <Link href="#" variant="body2" underline="none" to="login">
+            <Typography component={Link} variant="body2" to="login" sx={{ textDecoration: 'none' }}>
               Войти
-            </Link>
+            </Typography>
           </Grid>
         </Grid>
       </Box>

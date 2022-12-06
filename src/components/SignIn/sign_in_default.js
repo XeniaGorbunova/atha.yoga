@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -16,75 +16,76 @@ import InputLabel from '@mui/material/InputLabel';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerSlice } from '../../slices/auth';
 import { clearMessage } from '../../slices/message';
+import SignInConfirm from './sign_in_confirm';
 
 export default function SignInDefault() {
-  const Register = () => {
-    const [successful, setSuccessful] = useState(false);
+  const [successful, setSuccessful] = useState(false);
 
-    const { message } = useSelector((state) => state.message);
-    const dispatch = useDispatch();
+  const { message } = useSelector((state) => state.message);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-      dispatch(clearMessage());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(clearMessage());
+  }, [dispatch]);
 
-    const [values, setValues] = React.useState({
-      email: '',
-      amount: '',
-      password: '',
-      weight: '',
-      weightRange: '',
-      showPassword: false,
+  const [values, setValues] = React.useState({
+    email: '',
+    amount: '',
+    password: '',
+    weight: '',
+    weightRange: '',
+    showPassword: false,
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({
+      ...values,
+      [prop]: event.target.value,
     });
+  };
 
-    const handleChange = (prop) => (event) => {
-      setValues({
-        ...values,
-        [prop]: event.target.value,
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+    const {
+      email,
+      password,
+    } = {
+      email: data.get('email'),
+      password: data.get('password'),
+    };
+
+    setSuccessful(false);
+
+    dispatch(registerSlice({
+      email,
+      password,
+    }))
+      .unwrap()
+      .then(() => {
+        setSuccessful(true);
+      })
+      .catch(() => {
+        setSuccessful(false);
       });
-    };
+  };
 
-    const handleClickShowPassword = () => {
-      setValues({
-        ...values,
-        showPassword: !values.showPassword,
-      });
-    };
-
-    const handleMouseDownPassword = (event) => {
-      event.preventDefault();
-    };
-
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      const data = new FormData(event.currentTarget);
-      console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-      });
-      const {
-        email,
-        password,
-      } = {
-        email: data.get('email'),
-        password: data.get('password'),
-      };
-
-      setSuccessful(false);
-
-      dispatch(registerSlice({
-        email,
-        password,
-      }))
-        .unwrap()
-        .then(() => {
-          setSuccessful(true);
-        })
-        .catch(() => {
-          setSuccessful(false);
-        });
-    };
-
+  if (!successful) {
     return (
       <Container component="main" maxWidth="xs">
         <Box
@@ -133,15 +134,15 @@ export default function SignInDefault() {
                   onChange={handleChange('password')}
                   endAdornment={(
                     <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                      >
-                        {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  )}
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                          >
+                            {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      )}
                 />
               </FormControl>
               <Button
@@ -160,12 +161,17 @@ export default function SignInDefault() {
                 <Grid item>
                   <Typography variant="body2">
                     Уже есть аккаунт?
-                  </Typography>
+                      </Typography>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2" underline="none">
-                    Войти
-                  </Link>
+                  <Typography
+                    component={Link}
+                    to="login"
+                    variant="body2"
+                    sx={{ textDecoration: 'none' }}
+                  >
+                        Войти
+                  </Typography>
                 </Grid>
               </Grid>
             </>
@@ -176,22 +182,42 @@ export default function SignInDefault() {
             bottom: 32,
             textAlign: 'center',
             maxWidth: 380,
+            lineHeight: 0.1,
           }}
           >
             <Typography variant="caption">
-              Нажимая на кнопку «Зарегистрироваться», я подтверждаю, что ознакомлен(а) с
-              <Link variant="caption" underline="none" marginLeft={1}>
-                пользовательским соглашением
-              </Link>
+              Нажимая на кнопку «Зарегистрироваться», вы принимаете условия
+              <Typography
+                component={Link}
+                variant="caption"
+                to="#"
+                sx={{ textDecoration: 'none' }}
+                marginLeft={1}
+              >
+                Пользовательского соглашения
+              </Typography>
+            </Typography>
+            <Typography variant="caption" sx={{ maxWidth: 300 }} marginLeft={1}>
+              и
+              <Typography
+                component={Link}
+                variant="caption"
+                to="#"
+                sx={{ textDecoration: 'none' }}
+                marginLeft={1}
+              >
+                Политики конфиденциальности
+              </Typography>
             </Typography>
           </div>
         </Box>
         {message && (
-          <div>
-            {message}
-          </div>
+        <div>
+          {message}
+        </div>
         )}
       </Container>
     );
-  };
+  }
+  return <SignInConfirm />;
 }
