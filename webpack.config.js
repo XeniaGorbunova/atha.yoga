@@ -11,9 +11,13 @@ module.exports = (env, { mode }) => {
   output: {
     filename: getFilename('js'),
     path: path.resolve(__dirname, "dist"),
-    clean: true
+    clean: true,
+    publicPath: '/',
   },
-  mode,
+    devServer: {
+      historyApiFallback: true,
+    },
+    mode,
   module: {
     rules: [
       {
@@ -42,19 +46,19 @@ module.exports = (env, { mode }) => {
           loader: "babel-loader",
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react']
-          },  
+          },
         }
       },
       {
         test: /\.js$/,
-        enforce: "pre",
-        use: ["source-map-loader"],
+        enforce: 'pre',
+        use: ['source-map-loader'],
       },
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "src", "index.html"),
+      template: path.join(__dirname, 'src', 'index.html'),
     }),
   ],
   ...isDev && { devtool: 'source-map' }
