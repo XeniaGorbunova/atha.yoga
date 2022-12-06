@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -96,7 +95,6 @@ export default function LogIn() {
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="form__container">
           <TextField
-            required
             error={false}
             sx={{ mb: 2 }}
             margin="normal"
@@ -135,9 +133,9 @@ export default function LogIn() {
             />
           </FormControl>
           <div style={{ textAlign: 'right' }}>
-            <Link href="#" variant="body2" underline="none">
+            <Typography component={Link} variant="body2" to="/recovery-password" sx={{ textDecoration: 'none' }}>
               Забыли пароль?
-            </Link>
+            </Typography>
           </div>
           <Button
             type="submit"
@@ -155,9 +153,9 @@ export default function LogIn() {
               </Typography>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2" underline="none">
+              <Typography component={Link} variant="body2" to="/register" sx={{ textDecoration: 'none' }}>
                 Зарегистрироваться
-              </Link>
+              </Typography>
             </Grid>
           </Grid>
         </Box>

@@ -11,6 +11,7 @@ import ChangePasswordPage from './pages/changePassword';
 import PasswordRecoveryPage from './pages/passwordRecovery';
 import LogInBlockedPage from './pages/logInBlocked';
 import ProfilePage from './pages/profile';
+import ErrorPage from './pages/error/index.js'
 import AuthProvider from './utils/providers/auth/index.jsx';
 import BaseLayout from './layouts/index.jsx';
 import ProfileLayout from './layouts/profile/index.jsx';
@@ -55,6 +56,7 @@ function MyApp() {
           <Route path="register" element={<SignInDefaultPage />} />
           <Route path="profile" element={<ProfilePage auth={auth} />} />
           <Route path="recovery-password" element={<PasswordRecoveryPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </ThemeProvider>

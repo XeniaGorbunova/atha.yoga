@@ -166,7 +166,7 @@ export default function SignInDefault() {
                 <Grid item>
                   <Typography
                     component={Link}
-                    to="login"
+                    to="/login"
                     variant="body2"
                     sx={{ textDecoration: 'none' }}
                   >

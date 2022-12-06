@@ -92,7 +92,7 @@ const SplashScreens = () => {
         />
         <Button
           component={Link}
-          to="register"
+          to="/register"
           type="submit"
           fullWidth
           variant="contained"
@@ -107,7 +107,7 @@ const SplashScreens = () => {
             </Typography>
           </Grid>
           <Grid item>
-            <Typography component={Link} variant="body2" to="login" sx={{ textDecoration: 'none' }}>
+            <Typography component={Link} variant="body2" to="/login" sx={{ textDecoration: 'none' }}>
               Войти
             </Typography>
           </Grid>
